@@ -6,7 +6,7 @@ import com.greatlearning.service.MergeSortImplementation;
 import com.greatlearning.service.NotesCount;
 
 public class Main {
-
+    //Driver Class That Contains The Logic & control using two other classes for merge sort and notes count in service package,
     public static void main(String[] args) {
         MergeSortImplementation mergeSortImplementation = new MergeSortImplementation();
         NotesCount notesCount = new NotesCount();

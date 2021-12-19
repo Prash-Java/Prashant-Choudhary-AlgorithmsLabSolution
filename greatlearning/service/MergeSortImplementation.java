@@ -1,6 +1,7 @@
 package com.greatlearning.service;
 
 public class MergeSortImplementation {
+    //This class is belonging to service package and helps to sort an array, and in this case in descending order
     void merge(int arr[], int left, int mid, int right) {
         // Find sizes of two sub arrays to be merged
         int n1 = mid - left + 1;
