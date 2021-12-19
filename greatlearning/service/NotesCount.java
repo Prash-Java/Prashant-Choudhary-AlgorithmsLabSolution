@@ -1,24 +1,51 @@
 package com.greatlearning.service;
 
 public class NotesCount {
-    /*This is the first version of logic in this class which deals with Indian Currency as given in problem statement
+    //Usage For Global Currencies Including Indian Currency
+    public void notesCountImplementation(int[] notes, int amount) {
+        //Notes[] will be Integer Array Sorted In Descending Order of Currencies, and Amount is an Integer Value
+        //For Maintaining Count Of Each Denomination in sequence in next array
+        int[] noteCount = new int[notes.length];
+        try {
+            for (int i = 0; i < notes.length; i++) {
+                if (amount >= notes[i]) {
+                    noteCount[i] = (int) (amount / notes[i]);
+                    amount -= (noteCount[i] * notes[i]);
+                }
+            }
+            if (amount > 0) {
+                System.out.println("exact amount cannot be given with the highest denomination");
+            } else {
+                System.out.println("Your payment approach in order to give min no of notes will be");
+                for (int j = 0; j < notes.length; j++) {
+                    if (noteCount[j] != 0)
+                        System.out.println(notes[j] + ":" + noteCount[j]);
+                }
+            }
+        } catch (ArithmeticException exc) {
+            System.out.println(exc + " notes of denomination 0 is invalid");
+        }
+    }
+
+    /*This is the another version of logic in this class which deals with Indian Currency as given in problem statement
     Indian Currency Used Are 100,500,2000 denominations, can also include 200 denomination */
-    public void notesCountImplementation(int[] notes, int amount){
-        int notesCount=0;
-        while(amount>0 && amount%notes[notes.length-1]==0){
-            for(int i=0;i<notes.length;i++){
-                int balanceRatio = (int)(amount/notes[i]);
+    public void notesCountCurrencyImplementation(int[] notes, int amount) {
+        int notesCount = 0;
+        while (amount > 0 && amount % notes[notes.length - 1] == 0) {
+            System.out.println("Your payment approach in order to give min no of notes will be");
+            for (int i = 0; i < notes.length; i++) {
+                int balanceRatio = (int) (amount / notes[i]);
                 notesCount = notesCount + balanceRatio;
-                amount = amount-(notes[i]*balanceRatio);
-                System.out.println("Total Number Of Notes For " + notes[i] + " is " + balanceRatio);
-                if(amount==0){
+                amount = amount - (notes[i] * balanceRatio);
+                System.out.println(notes[i] + ":" + balanceRatio);
+                if (amount == 0) {
                     break;
                 }
             }
         }
-        System.out.println("Total Minimum Notes: " + notesCount);
-        if(amount>0){
-            System.out.println("Entered Amount Is Not Valid..");
+        //In cases where there is still some amount left but is not any multiple of any denominations
+        if (amount > 0) {
+            System.out.println("exact amount cannot be given with the highest denomination");
         }
     }
 }
