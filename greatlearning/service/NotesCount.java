@@ -31,21 +31,22 @@ public class NotesCount {
     /*This is the another version of logic in this class which deals with Indian Currency as given in problem statement
     Indian Currency Used Are 100,500,2000 denominations, can also include 200 denomination */
     public void notesCountCurrencyImplementation(int[] notes, int amount) {
-        int notesCount = 0;
-        while (amount > 0 && amount % notes[notes.length - 1] == 0) {
+        //Here we know notes array is sorted in decreasing order and as per problem statement, least denomination is 100, which cab be treated as gcd among 2000,500,100 denominations
+        if ((amount > 0) && (amount % notes[notes.length - 1] == 0)) {
             System.out.println("Your payment approach in order to give min no of notes will be");
-            for (int i = 0; i < notes.length; i++) {
-                int balanceRatio = (int) (amount / notes[i]);
-                notesCount = notesCount + balanceRatio;
-                amount = amount - (notes[i] * balanceRatio);
-                System.out.println(notes[i] + ":" + balanceRatio);
+            for (int value : notes) {
+                int balanceRatio = (int) (amount / value);
+                amount = amount - (value * balanceRatio);
+                if (balanceRatio != 0) {
+                    System.out.println(value + ":" + balanceRatio);
+                }
                 if (amount == 0) {
                     break;
                 }
             }
         }
         //In cases where there is still some amount left but is not any multiple of any denominations
-        if (amount > 0) {
+        else {
             System.out.println("exact amount cannot be given with the highest denomination");
         }
     }
