@@ -3,16 +3,17 @@ package com.greatlearning.service;
 public class NotesCount {
     //Usage For Global Currencies Including Indian Currency
     public void notesCountImplementation(int[] notes, int amount) {
-        //Notes[] will be Integer Array Sorted In Descending Order of Currencies, and Amount is an Integer Value
-        //For Maintaining Count Of Each Denomination in sequence in next array
+        /* Notes[] will be Integer Array Sorted In Descending Order of Currencies, and Amount is an Integer Value
+           For Maintaining Count Of Each Denomination in sequence in next array and maintained in same index order as denominations index in its array */
         int[] noteCount = new int[notes.length];
         try {
             for (int i = 0; i < notes.length; i++) {
                 if (amount >= notes[i]) {
                     noteCount[i] = (int) (amount / notes[i]);
-                    amount -= (noteCount[i] * notes[i]);
+                    amount = (amount % notes[i]);
                 }
             }
+            //This case represents the remaining amount that still remains and cannot be dealt with existing denominations
             if (amount > 0) {
                 System.out.println("exact amount cannot be given with the highest denomination");
             } else {
