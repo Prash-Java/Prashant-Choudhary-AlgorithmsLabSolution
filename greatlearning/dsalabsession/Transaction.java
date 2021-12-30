@@ -37,9 +37,11 @@ public class Transaction {
             }
             //if sum remains less than target value and entire array is traversed, it means target is not acheived
             if (count == transactionValuesArray.length && sum < targetValue) {
-                System.out.println("Given target is not acheived..");
+                System.out.println("Given target is not acheived");
             }
             sum = 0;
+            System.out.println();
         }
+        sc.close();
     }
 }
