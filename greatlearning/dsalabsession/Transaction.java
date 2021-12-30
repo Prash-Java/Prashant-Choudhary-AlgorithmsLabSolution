@@ -11,7 +11,7 @@ public class Transaction {
         System.out.println("Enter the size of transaction array");
         int sizeOfTransactions = sc.nextInt();
         //Capturing values of transaction in array and proceeding ahead if user gives value greater than 0
-        if(sizeOfTransactions>0) {
+        if (sizeOfTransactions > 0) {
             int[] transactionValuesArray = new int[sizeOfTransactions];
             System.out.println("Enter the values of array");
             for (int i = 0; i < transactionValuesArray.length; i++) {
@@ -45,7 +45,7 @@ public class Transaction {
             }
         }
         //in case user enters array size as 0, this message we can display on console
-        else{
+        else {
             System.out.println("Enter value greater than 0");
         }
         sc.close();

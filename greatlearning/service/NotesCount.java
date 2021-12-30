@@ -15,8 +15,10 @@ public class NotesCount {
             }
             //This case represents the remaining amount that still remains and cannot be dealt with existing denominations
             if (amount > 0) {
+                System.out.println();
                 System.out.println("exact amount cannot be given with the highest denomination");
             } else {
+                System.out.println();
                 System.out.println("Your payment approach in order to give min no of notes will be");
                 for (int j = 0; j < notes.length; j++) {
                     if (noteCount[j] != 0)
